@@ -4,13 +4,17 @@ function run() {
     var tigger = new Tiger("Tigger");
     tigger.eat("meat");
     tigger.eat("kibble");
+    var pooh = new Bear("Pooh");
+    pooh.eat("fish");
+    pooh.eat("meat");
+
   }
 
 class Tiger {
 
     constructor(name) {
-        this.name = name
-        this.favoriteFood = "meat"
+        this.name = name;
+        this.favoriteFood = "meat";
     }
 
     sleep() {
@@ -18,12 +22,32 @@ class Tiger {
     }
 
     eat(food) {
-      console.log(this.name + " eats " + food)
+      console.log(this.name + " eats " + food);
       if (food == this.favoriteFood) {
-        console.log("YUM!!! " + this.name + " wants more " + food)
+        console.log("YUM!!! " + this.name + " wants more " + food);
       } else {
-        this.sleep(this.name)
+        this.sleep(this.name);
       }
     }
 }
 
+class Bear {
+
+    constructor(name) {
+        this.name = name;
+        this.favoriteFood = "fish";
+    }
+
+    sleep() {
+      console.log(this.name + " hibernates for 4 months");
+    }
+
+    eat(food) {
+      console.log(this.name + " eats " + food);
+      if (food == this.favoriteFood) {
+        console.log("YUM!!! " + this.name + " wants more " + food);
+      } else {
+        this.sleep(this.name);
+      }
+    }
+}
