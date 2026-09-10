@@ -11,6 +11,27 @@ function run(){
   Tigger.eat( "meat");
 }
 
+class Animal {
+    
+    constructor(name,favoriteFood) {
+        this.name = name
+        this.favoriteFood = favoriteFood
+    }
+
+    sleep() {
+      console.log(this.name + " sleeps for 8 hours");
+    }
+
+    eat(food) {
+      console.log(this.name + " eats " + food);
+      if (food == this.favoriteFood) {
+        console.log("YUM!!! " + this.name + " wants more " + food);
+      } else {
+        this.sleep(this.name);
+      }
+    }
+}
+
 class Tiger extends Animal{
 
     constructor(name) {
@@ -34,16 +55,16 @@ class Bear extends Animal{
 class Giraffe extends Animal{
   
   constuctor(name) {
-    super(name, "leaves")
+    super(name, "leaves");
   }
 
   eat(food) {
       console.log(this.name + " eats " + food);
       if (food == "leaves") {
         console.log("YUM!!! " + this.name + " wants more leaves");
-        this.sleep(this.name)
+        this.sleep(this.name);
       } else {
-        console.log("YUCK!!! " + this.name + " will not eat " + food)
+        console.log("YUCK!!! " + this.name + " will not eat " + food);
       }
     }
 
@@ -78,25 +99,4 @@ class Bee extends Animal{
       }
     }
 
-}
-
-class Animal {
-    
-    constructor(name,favoriteFood) {
-        this.name = name
-        this.favoriteFood = favoriteFood
-    }
-
-    sleep() {
-      console.log(this.name + " sleeps for 8 hours");
-    }
-
-    eat(food) {
-      console.log(this.name + " eats " + food);
-      if (food == this.favoriteFood) {
-        console.log("YUM!!! " + this.name + " wants more " + food);
-      } else {
-        this.sleep(this.name);
-      }
-    }
 }
