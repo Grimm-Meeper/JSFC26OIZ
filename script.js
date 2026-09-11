@@ -1,21 +1,12 @@
-//starter code
-
-function run(){
-  //init:
-  var Tigger = new Tiger("Tigger");
-  var Pooh = new Bear("Pooh");
-  var Rarity = new Unicorn("Rarity");
-  var Gemma = new Giraffe("Gemma");
-  var Stinger = new Bee("Stinger");
-  //output:
-  Tigger.eat( "meat");
-}
-
+//global vars:
+var animalPopulation = 0
+//classes:
 class Animal {
     
     constructor(name,favoriteFood) {
         this.name = name
         this.favoriteFood = favoriteFood
+        animalPopulation++
     }
 
     sleep() {
@@ -29,6 +20,10 @@ class Animal {
       } else {
         this.sleep(this.name);
       }
+    }
+
+    static getPopulation(){
+      return(animalPopulation)
     }
 }
 
@@ -54,13 +49,14 @@ class Bear extends Animal{
 
 class Giraffe extends Animal{
   
-  constuctor(name) {
+  constructor(name) {
     super(name, "leaves");
   }
 
   eat(food) {
-      console.log(this.name + " eats " + food);
+
       if (food == "leaves") {
+        console.log(this.name + " eats " + food);
         console.log("YUM!!! " + this.name + " wants more leaves");
         this.sleep(this.name);
       } else {
@@ -72,7 +68,7 @@ class Giraffe extends Animal{
 
 class Unicorn extends Animal{
 
-  constuctor(name) {
+  constructor(name) {
     super(name, "marshmallows")
   }
 
@@ -82,7 +78,8 @@ class Unicorn extends Animal{
 }
 
 class Bee extends Animal{
-  constuctor(name){
+
+  constructor(name){
     super(name)
   }
   
@@ -91,12 +88,50 @@ class Bee extends Animal{
   }
 
   eat(food) {
-      console.log(this.name + " eats " + food);
-      if (food == "nectar") {
-        console.log("YUM!!! " + this.name + " wants more nectar");
+    if (food == "pollen") {
+        console.log(this.name + " eats " + food);
+        console.log("YUM!!! " + this.name + " wants more pollen");
       } else {
         console.log("YUCK!!! " + this.name + " will not eat " + food);
       }
     }
 
+}
+
+class zookeeper {
+
+  constructor(name){
+    this.name = name
+  }
+
+  feedAnimals(animals, food){
+    console.log(this.name + " is feeding " + food + " to " + animals.length + " of " + Animal.getPopulation() + " total animals.")
+    for(let i = 0; i < animals.length; i++) {
+      animals[i].eat(food)
+    }
+  }
+}
+
+function run(){
+  //init:
+  var Tigger = new Tiger("Tigger");
+  var Pooh = new Bear("Pooh");
+  var Rarity = new Unicorn("Rarity");
+  var Gemma = new Giraffe("Gemma");
+  var Stinger = new Bee("Stinger");
+  //output:
+  Tigger.eat( "meat");
+  Pooh.eat("fish");
+  Pooh.eat("meat");
+  Rarity.eat("marshmallows");
+  Rarity.sleep();
+  Gemma.eat("meat");
+  Gemma.eat("leaves");
+  Stinger.eat("ice cream")
+  Stinger.eat("pollen")
+  console.log("")
+  //new:
+  var zoe = new zookeeper("Zoebot")
+  zoe.feedAnimals([Tigger, Pooh, Rarity, Gemma, Stinger], "fuck")
+  console.log("")
 }
